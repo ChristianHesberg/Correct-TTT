@@ -26,13 +26,11 @@ public class GameBoard implements IGameModel
         if (isPlayer1)
         {
             isPlayer1 = false;
-            System.out.println("hello");
             return 0;
         }
         else
         {
             isPlayer1 = true;
-            System.out.println("wtf");
             return 1;
         }
     }
@@ -49,7 +47,17 @@ public class GameBoard implements IGameModel
      */
     public boolean play(int col, int row)
     {
-        //TODO Implement this method
+       /*
+        if (boardSquares[col][row] == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+        */
         return true;
     }
 
