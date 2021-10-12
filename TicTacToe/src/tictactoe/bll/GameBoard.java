@@ -15,6 +15,7 @@ public class GameBoard implements IGameModel
 {
     private boolean isPlayer1;
     public  int[][] boardSquares = new int[3][3];
+    public int player;
 
     /**
      * Returns 0 for player 0, 1 for player 1.
@@ -101,7 +102,14 @@ public class GameBoard implements IGameModel
      */
     public void newGame()
     {
-
+        player = 0;
+        for (int r = 0; r<boardSquares.length; r++ )
+        {
+            for (int c = 0; r < boardSquares[0].length; c++)
+            {
+                boardSquares[r][c]=-1;
+            }
+        }
     }
 
 }
