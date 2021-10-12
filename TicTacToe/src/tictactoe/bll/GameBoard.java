@@ -5,6 +5,8 @@
  */
 package tictactoe.bll;
 
+import java.lang.reflect.Array;
+
 /**
  *
  * @author Stegger
@@ -12,6 +14,7 @@ package tictactoe.bll;
 public class GameBoard implements IGameModel
 {
     private boolean isPlayer1;
+    public  int[][] boardSquares = new int[3][3];
 
     /**
      * Returns 0 for player 0, 1 for player 1.
@@ -63,6 +66,25 @@ public class GameBoard implements IGameModel
      */
     public int getWinner()
     {
+        for (int r = 0; r<boardSquares.length; r++ )
+        {
+            for (int c = 0; r<boardSquares[0].length; c++)
+            {
+                System.out.print(boardSquares[r][c] + " , ");
+                /*
+                if (boardSquares[r][c] == boardSquares[r][c+1] & boardSquares[r][c] == boardSquares[r][c+2])
+                {
+                    System.out.println("winner!");
+                }
+                if (boardSquares[r][c] == boardSquares[r+1][c] & boardSquares[r][c] == boardSquares[r+2][c])
+                {
+                    System.out.println("winner");
+                }
+
+                 */
+            }
+            System.out.println();
+        }
         return -1;
     }
 

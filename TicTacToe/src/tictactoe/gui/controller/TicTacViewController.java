@@ -34,7 +34,7 @@ public class TicTacViewController implements Initializable
     private GridPane gridPane;
     
     private static final String TXT_PLAYER = "Player: ";
-    private IGameModel game;
+    private GameBoard game;
     private int player;
 
 
@@ -47,7 +47,6 @@ public class TicTacViewController implements Initializable
             Integer col = GridPane.getColumnIndex((Node) event.getSource());
             int r = (row == null) ? 0 : row;
             int c = (col == null) ? 0 : col;
-            //int player = game.getNextPlayer();
             if (game.play(c, r))
             {
                 if (game.isGameOver())
@@ -60,7 +59,16 @@ public class TicTacViewController implements Initializable
                     Button btn = (Button) event.getSource();
                     String xOrO = player == 0 ? "X" : "O";
                     btn.setText(xOrO);
+                    if (player == 0)
+                    {
+                        game.boardSquares[r][c] = 1;
+                    }
+                    if (player == 1)
+                    {
+                        game.boardSquares[r][c] = 2;
+                    }
                     setPlayer();
+                    game.getWinner();
                 }
             }
         } catch (Exception e)
