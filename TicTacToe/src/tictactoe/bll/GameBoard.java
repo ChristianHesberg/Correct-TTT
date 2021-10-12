@@ -77,7 +77,7 @@ public class GameBoard implements IGameModel
     {
         for (int r = 0; r<boardSquares.length; r++ )
         {
-            for (int c = 0; r<boardSquares[0].length; c++)
+            for (int c = 0; c<boardSquares[0].length; c++)
             {
                 System.out.print(boardSquares[r][c] + " , ");
                 /*
@@ -105,7 +105,7 @@ public class GameBoard implements IGameModel
         player = 0;
         for (int r = 0; r<boardSquares.length; r++ )
         {
-            for (int c = 0; r < boardSquares[0].length; c++)
+            for (int c = 0; c < boardSquares[0].length; c++)
             {
                 boardSquares[r][c]=-1;
             }

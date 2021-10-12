@@ -53,6 +53,7 @@ public class TicTacViewController implements Initializable
                     int winner = game.getWinner();
                     displayWinner(winner);
                 }
+
                 else
                 {
                     Button btn = (Button) event.getSource();
@@ -88,6 +89,7 @@ public class TicTacViewController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
         game = new GameBoard();
+        game.newGame();
         setPlayer();
     }
 
