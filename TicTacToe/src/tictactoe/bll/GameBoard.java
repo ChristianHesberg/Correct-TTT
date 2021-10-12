@@ -48,18 +48,23 @@ public class GameBoard implements IGameModel
      */
     public boolean play(int col, int row)
     {
-       /*
-        if (boardSquares[col][row] == 0)
+        if (boardSquares[row][col] == -1)
         {
             return true;
+        }
+        if (boardSquares[row][col] == 0)
+        {
+            return false;
+        }
+        if (boardSquares[row][col] == 1)
+        {
+            return false;
         }
         else
         {
             return false;
         }
 
-        */
-        return true;
     }
 
     public boolean isGameOver()
