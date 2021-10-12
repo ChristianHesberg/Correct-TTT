@@ -8,13 +8,11 @@ package tictactoe.bll;
 import java.lang.reflect.Array;
 
 /**
- *
  * @author Stegger
  */
-public class GameBoard implements IGameModel
-{
+public class GameBoard implements IGameModel {
     private boolean isPlayer1;
-    public  int[][] boardSquares = new int[3][3];
+    public int[][] boardSquares = new int[3][3];
     public int player;
 
     /**
@@ -22,15 +20,11 @@ public class GameBoard implements IGameModel
      *
      * @return int Id of the next player.
      */
-    public int getNextPlayer()
-    {
-        if (isPlayer1)
-        {
+    public int getNextPlayer() {
+        if (isPlayer1) {
             isPlayer1 = false;
             return 0;
-        }
-        else
-        {
+        } else {
             isPlayer1 = true;
             return 1;
         }
@@ -46,32 +40,15 @@ public class GameBoard implements IGameModel
      * @return true if the move is accepted, otherwise false. If gameOver == true
      * this method will always return false.
      */
-    public boolean play(int col, int row)
-    {
-        if (boardSquares[row][col] == -1)
-        {
-            return true;
-        }
-        if (boardSquares[row][col] == 0)
-        {
+    public boolean play(int col, int row) {
+        if (boardSquares[row][col] == 0 || boardSquares[row][col] == 1) {
             return false;
         }
-        if (boardSquares[row][col] == 1)
-        {
-            return false;
-        }
-        else
-        {
-            return false;
-        }
-
-
+        return true;
     }
 
-    public boolean isGameOver()
-    {
-        if (compareRows() || compareColumns() || compareDiag())
-        {
+    public boolean isGameOver() {
+        if (compareRows() || compareColumns() || compareDiag() || checkForDraw()) {
             return true;
         }
         return false;
@@ -116,88 +93,75 @@ public class GameBoard implements IGameModel
      *
      * @return int id of winner, or -1 if draw.
      */
-    public int getWinner()
-    {
-        for (int r = 0; r<boardSquares.length; r++ )
-        {
-            for (int c = 0; c<boardSquares[0].length; c++)
-            {
-                System.out.print(boardSquares[r][c] + " , ");
-            }
-            System.out.println();
-        }
-        return -1;
+    public int getWinner() {
+        return player + 1;
     }
 
     /**
      * Resets the game to a new game state.
      */
-    public void newGame()
-    {
+    public void newGame() {
         player = 0;
-        for (int r = 0; r<boardSquares.length; r++ )
-        {
-            for (int c = 0; c < boardSquares[0].length; c++)
-            {
-                boardSquares[r][c]=-1;
+        for (int r = 0; r < boardSquares.length; r++) {
+            for (int c = 0; c < boardSquares[0].length; c++) {
+                boardSquares[r][c] = -1;
             }
         }
     }
 
-    public void addArrValues(int r, int c)
-    {
-        if (player == 0)
-        {
+    public void addArrValues(int r, int c) {
+        if (player == 0) {
             boardSquares[r][c] = 0;
         }
-        if (player == 1)
-        {
+        if (player == 1) {
             boardSquares[r][c] = 1;
         }
     }
 
-    public boolean checkCells(int c1, int c2, int c3)
-    {
-        return ((c1 != -1) && (c1 ==c2) && (c1 ==c3));
+    public boolean checkCells(int c1, int c2, int c3) {
+        return ((c1 != -1) && (c1 == c2) && (c1 == c3));
     }
 
-    public boolean compareRows()
-    {
-        for (int r=0; r<3; r++)
-        {
-            if (checkCells(boardSquares[r][0], boardSquares[r][1], boardSquares[r][2]))
-            {
+    public boolean compareRows() {
+        for (int r = 0; r < 3; r++) {
+            if (checkCells(boardSquares[r][0], boardSquares[r][1], boardSquares[r][2])) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean compareColumns()
-    {
-        for (int c=0; c<3; c++)
-        {
-            if (checkCells(boardSquares[0][c], boardSquares[1][c], boardSquares[2][c]))
-            {
+    public boolean compareColumns() {
+        for (int c = 0; c < 3; c++) {
+            if (checkCells(boardSquares[0][c], boardSquares[1][c], boardSquares[2][c])) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean compareDiag()
-    {
-        if (checkCells(boardSquares[0][0], boardSquares[1][1], boardSquares[2][2]))
-        {
+    public boolean compareDiag() {
+        if (checkCells(boardSquares[0][0], boardSquares[1][1], boardSquares[2][2])) {
             return true;
         }
-        if (checkCells(boardSquares[2][0], boardSquares[1][1], boardSquares[0][2]))
-        {
+        if (checkCells(boardSquares[2][0], boardSquares[1][1], boardSquares[0][2])) {
             return true;
         }
         return false;
     }
 
-
-
+    public boolean checkForDraw() {
+        int counter = 9;
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
+                if (boardSquares[r][c] != -1) {
+                    counter--;
+                }
+            }
+        }
+        if (counter == 0) {
+            return true;
+        }
+        return false;
+    }
 }
