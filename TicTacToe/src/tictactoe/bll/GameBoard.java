@@ -107,7 +107,6 @@ public class GameBoard implements IGameModel {
      * Resets the game to a new game state.
      */
     public void newGame() {
-        player = 0;
         for (int r = 0; r < boardSquares.length; r++) {
             for (int c = 0; c < boardSquares[0].length; c++) {
                 boardSquares[r][c] = -1;
