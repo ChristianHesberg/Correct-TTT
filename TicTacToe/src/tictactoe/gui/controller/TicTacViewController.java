@@ -64,6 +64,12 @@ public class TicTacViewController implements Initializable
                     game.getWinner();
                 }
             }
+            else
+            {
+                game.checkForDraw();
+                int winner = game.getWinner();
+                displayWinner(winner);
+            }
         } catch (Exception e)
         {
             System.out.println(e.getMessage());

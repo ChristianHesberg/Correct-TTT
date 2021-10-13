@@ -94,7 +94,13 @@ public class GameBoard implements IGameModel {
      * @return int id of winner, or -1 if draw.
      */
     public int getWinner() {
-        return player + 1;
+        if (checkForDraw())
+        {
+            return -1;
+        }
+        else {
+            return player + 1;
+        }
     }
 
     /**
