@@ -9,7 +9,12 @@ and open the template in the editor.
 */
 
 #pane {
-    -fx-background-image: url(../images/background.jpg);
-    -fx-background-repeat: stretch;   
-    -fx-background-position: center;
+    -fx-background-color: #526379;
+}
+.button {
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-border-width:2;
+    -fx-border-color: #ffca56;
+    -fx-background-color: #7c90a9;
 }
