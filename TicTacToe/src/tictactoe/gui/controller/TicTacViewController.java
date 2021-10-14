@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import tictactoe.bll.GameBoard;
-import tictactoe.bll.IGameModel;
+
 
 /**
  *
@@ -28,12 +28,7 @@ public class TicTacViewController implements Initializable
     private Label lblPlayer;
 
     @FXML
-    private Button btnNewGame;
-
-    @FXML
     private GridPane gridPane;
-    
-    private static final String TXT_PLAYER = "Player: ";
     private GameBoard game;
 
 
